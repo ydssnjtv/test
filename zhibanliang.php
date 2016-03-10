@@ -46,7 +46,6 @@ while($i<=7){
    $summary[$ry]=$summary[$ry]+$count[0];//这是计算最后每人合计总班次的；
    if($i==7){echo "</tr>";}//再次提醒！！！如果写$i=7就不对，比较关系中只有==，不能=；
    $i++;
-   unset($result1);
 }
 
 
@@ -61,7 +60,6 @@ while($i<=7){
    $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
-   unset($result1);
 }
 
 
@@ -76,7 +74,6 @@ while($i<=7){
    $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
-   unset($result1);
 }
 
 
@@ -91,7 +88,6 @@ while($i<=7){
    $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
-   unset($result1);
 }	   
 
 echo "<tr><td><p style='color:black;font-size:35px;text-align:center'>审晚</p></td>";
@@ -105,7 +101,6 @@ while($i<=7){
    $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
-   unset($result1);
 }
 
 echo "<tr><td><p style='color:black;font-size:35px;text-align:center;font-weight:bold'>合计</p></td>";
