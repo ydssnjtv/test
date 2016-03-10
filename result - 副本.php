@@ -8,6 +8,7 @@
   <th><span style='color:black;font-size:35px'>中二</span></th>
   <th><span style='color:black;font-size:35px'>审晚</span></th>
  </tr>
+
 <?php
 require('panduan.php');
 //header("Content-type:text/html;charset=utf-8");据说是解决乱码的
