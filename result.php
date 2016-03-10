@@ -12,8 +12,7 @@
 require_once('panduan.php');
 require_once('connectdb.php');
 linkdb();//调用connectdb.php中的函数创建数据库连接
-//$link = mysql_connect($hostname, $dbuser, $dbpass);   ~~~mysql_connect过时了，被下面的mysqli_connect取代，但是后者的参数定义不一样的，端口放在最后！！
-//mysql_select_db("yujunlawfirm") or die("不能选择数据库");
+//用mysqli还是报错，无法读取数据，用mysql连接就没有问题
 $dbname = "dfd61754ba8e04374a91b8bdf5344e36a";
 mysql_select_db($dbname) or die("不能选择数据库");
 
