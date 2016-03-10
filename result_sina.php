@@ -11,11 +11,11 @@
 <?php
 require_once('panduan.php');
 require_once('connectdb.php');
-linkdb();//调用connectdb.php中的函数创建数据库连接
-//$link = mysql_connect($hostname, $dbuser, $dbpass);   ~~~mysql_connect过时了，被下面的mysqli_connect取代，但是后者的参数定义不一样的，端口放在最后！！
-//mysql_select_db("yujunlawfirm") or die("不能选择数据库");
 
-echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造Mysql数据库连接！<br/></p>";
+linkdb();//调用connectdb.php中的函数创建数据库连接
+$mysql = new SaeMysql(); //使用saesql类连接数据库
+
+echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造SaeMysql数据库连接！<br/></p>";
 
 //将表单传入的时间赋值，生成查询时间变量；
 //echo $_POST['year']."年".$_POST['month']."月<br/><br/>";
@@ -32,30 +32,28 @@ panduan($time);	//调用的是panduan.php的函数
 $sql = "SELECT * FROM `banbiao` WHERE `日期` BETWEEN '$time' AND '$timeend1'";//sql语句里的表和字段要用``括起来，字符串和变量要用单引号括起来；
 //$sql = "SELECT * FROM `banbiao` WHERE `审晚` = '郑雯'";
 //$sql = "SELECT * FROM `banbiao` WHERE `小晚` IS NOT NULL ";     
-    //$result = $mysql->getData($sql); 
-
-
-$a2=mysql_query($sql)or die("对不起，读入数据时出错了！". mysql_error());
-while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetch_array() 是 mysql_fetch_row() 的扩展版本。除了将数据以数字索引方式储存在数组中之外，还可以将数据作为关联索引储存，用字段名作为键名。也就是如果下标是字符串，会多返回一份下标是字符串的结果。
-{
-	echo "<tr>";
-		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
+    $result = $mysql->getData($sql); 
+        
+    foreach ($result as $row=>$value)
+         {
+          
+		  echo "<tr>";
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$value['日期'].'</p></td>';
 		   
-		   $riqi=strtotime($result[0]);//尽管日期在MYSQL里是日期格式，但取出的$value['日期']只是字符串格式，不是时间，将其转为时间戳；
+		   $riqi=strtotime($value['日期']);//尽管日期在MYSQL里是日期格式，但取出的$value['日期']只是字符串格式，不是时间，将其转为时间戳；
 		   $weekarray=array("日","一","二","三","四","五","六");
   		   $zhouji=$weekarray[date("w",$riqi)];//换算成周几并转换成汉字表达，date("w",$riqi)是将日期转换为0～6的星期几；
            echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
 		   
-		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
-		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
-		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[3].'</p></td>';
-		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[4].'</p></td>';
-		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[5].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$value['中班'].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$value['早班'].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$value['小晚'].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$value['中二'].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$value['审晚'].'</p></td>';
 		  echo "</tr>";
 		
 			//要获得星期几，可以参考http://www.111cn.net/phper/php/51257.htm；
-}
-
-mysql_close();
+          }  
+    $mysql->closeDb();
 ?>
 </table>
