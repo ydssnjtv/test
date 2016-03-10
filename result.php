@@ -14,8 +14,11 @@ require_once('connectdb.php');
 linkdb();//调用connectdb.php中的函数创建数据库连接
 //$link = mysql_connect($hostname, $dbuser, $dbpass);   ~~~mysql_connect过时了，被下面的mysqli_connect取代，但是后者的参数定义不一样的，端口放在最后！！
 //mysql_select_db("yujunlawfirm") or die("不能选择数据库");
+$dbname = "dfd61754ba8e04374a91b8bdf5344e36a";
+mysql_select_db($dbname) or die("不能选择数据库");
 
 echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造Mysql数据库连接！<br/></p>";
+
 
 //将表单传入的时间赋值，生成查询时间变量；
 //echo $_POST['year']."年".$_POST['month']."月<br/><br/>";
@@ -33,7 +36,6 @@ $sql = "SELECT * FROM `banbiao` WHERE `日期` BETWEEN '$time' AND '$timeend1'";
 //$sql = "SELECT * FROM `banbiao` WHERE `审晚` = '郑雯'";
 //$sql = "SELECT * FROM `banbiao` WHERE `小晚` IS NOT NULL ";     
     //$result = $mysql->getData($sql); 
-
 
 $a2=mysql_query($sql)or die("对不起，读入数据时出错了！". mysql_error());
 while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetch_array() 是 mysql_fetch_row() 的扩展版本。除了将数据以数字索引方式储存在数组中之外，还可以将数据作为关联索引储存，用字段名作为键名。也就是如果下标是字符串，会多返回一份下标是字符串的结果。
