@@ -18,7 +18,7 @@ linkdb();
 $dbname = "dfd61754ba8e04374a91b8bdf5344e36a";
 mysql_select_db($dbname) or die("不能选择数据库");
 
-echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造SaeMysql数据库连接！<br/></p>";
+echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造Mopaas Mysql数据库连接！<br/></p>";
 
 //将表单传入的时间赋值，生成查询时间变量；
 //echo $_POST['year']."年".$_POST['month']."月<br/><br/>";
@@ -39,23 +39,11 @@ echo "<tr><td><p style='color:black;font-size:35px;text-align:center'>早班</p>
 $i=0;
 while($i<=7){
   $ry=$renyuan[$i];
-  $sql_ss = "select `早班` from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `早班` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
-  $result1 = $mysql->getData($sql_ss);
-  $count=0;
-  foreach ((array)$result1 as $r1=>$credit){     //代码有些怪，看48行注释
-	    if($credit['ratio']){
-		  $result1[$r1]=$credit;
-	    }$count++;
-   }
-
-//这段代码就是循环一遍数组，用$count累积出值班量，如果用普通的foreach会报错，如下：
-//foreach ($result1 as $r1){
-//	$count++;
-//}
-//执行后会报"Warning: Invalid argument supplied for foreach() in"，可能因为某个值为空；
-
-   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count."</p></td>";
-   $summary[$ry]=$summary[$ry]+$count;//这是计算最后每人合计总班次的；
+  $sql_ss = "select count(*) from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `早班` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
+  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());
+  $count=mysql_fetch_row($aa);
+   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count[0]."</p></td>";
+   $summary[$ry]=$summary[$ry]+$count[0];//这是计算最后每人合计总班次的；
    if($i==7){echo "</tr>";}//再次提醒！！！如果写$i=7就不对，比较关系中只有==，不能=；
    $i++;
    unset($result1);
@@ -66,23 +54,11 @@ echo "<tr><td><p style='color:black;font-size:35px;text-align:center'>中班</p>
 $i=0;
 while($i<=7){
   $ry=$renyuan[$i];
-  $sql_ss = "select `中班` from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `中班` like '%$ry%'";//select语句里变量要用引号括起来！！！！
-  $result1 = $mysql->getData($sql_ss);
-  $count=0;
-  foreach ((array)$result1 as $r1=>$credit){     //代码有些怪，看48行注释
-	    if($credit['ratio']){
-		  $result1[$r1]=$credit;
-	    }$count++;
-   }
-
-//如果用普通的foreach会报错，如下：
-//foreach ($result1 as $r1){
-//	$count++;
-//}
-//执行后会报"Warning: Invalid argument supplied for foreach() in"，可能因为某个值为空；
-
-   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count.'</p></td>';
-   $summary[$ry]=$summary[$ry]+$count;
+  $sql_ss = "select count(*) from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `中班` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
+  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());
+  $count=mysql_fetch_row($aa);
+   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count[0]."</p></td>";
+   $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
    unset($result1);
@@ -93,23 +69,11 @@ echo "<tr><td><p style='color:black;font-size:35px;text-align:center'>中二</p>
 $i=0;
 while($i<=7){
   $ry=$renyuan[$i];
-  $sql_ss = "select `中二` from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `中二` like '%$ry%'";//select语句里变量要用引号括起来！！！！
-  $result1 = $mysql->getData($sql_ss);
-  $count=0;
-  foreach ((array)$result1 as $r1=>$credit){     //代码有些怪，看48行注释
-	    if($credit['ratio']){
-		  $result1[$r1]=$credit;
-	    }$count++;
-   }
-
-//如果用普通的foreach会报错，如下：
-//foreach ($result1 as $r1){
-//	$count++;
-//}
-//执行后会报"Warning: Invalid argument supplied for foreach() in"，可能因为某个值为空；
-
-   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count.'</p></td>';
-   $summary[$ry]=$summary[$ry]+$count;
+  $sql_ss = "select count(*) from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `中二` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
+  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());
+  $count=mysql_fetch_row($aa);
+   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count[0]."</p></td>";
+   $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
    unset($result1);
@@ -120,23 +84,11 @@ echo "<tr><td><p style='color:black;font-size:35px;text-align:center'>小晚</p>
 $i=0;
 while($i<=7){
   $ry=$renyuan[$i];
-  $sql_ss = "select `小晚` from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `小晚` like '%$ry%'";//select语句里变量要用引号括起来！！！！
-  $result1 = $mysql->getData($sql_ss);
-  $count=0;
-  foreach ((array)$result1 as $r1=>$credit){     //代码有些怪，看48行注释
-	    if($credit['ratio']){
-		  $result1[$r1]=$credit;
-	    }$count++;
-   }
-
-//如果用普通的foreach会报错，如下：
-//foreach ($result1 as $r1){
-//	$count++;
-//}
-//执行后会报"Warning: Invalid argument supplied for foreach() in"，可能因为某个值为空；
-
-   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count."</p></td>";
-   $summary[$ry]=$summary[$ry]+$count;
+  $sql_ss = "select count(*) from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `小晚` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
+  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());
+  $count=mysql_fetch_row($aa);
+   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count[0]."</p></td>";
+   $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
    unset($result1);
@@ -146,24 +98,11 @@ echo "<tr><td><p style='color:black;font-size:35px;text-align:center'>审晚</p>
 $i=0;
 while($i<=7){
   $ry=$renyuan[$i];
-  $sql_ss = "select `审晚` from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `审晚` like '%$ry%'";//select语句里变量要用引号括起来！！！！
-  $result1 = $mysql->getData($sql_ss);
-  $count=0;
-  foreach ((array)$result1 as $r1=>$credit){     //代码有些怪，看48行注释
-	    if($credit['ratio']){
-		  $result1[$r1]=$credit;
-	    }
-	    $count++;
-   }
-
-//这段代码就是循环一遍数组，用$count累积出值班量，如果用普通的foreach会报错，如下：
-//foreach ($result1 as $r1){
-//	$count++;
-//}
-//执行后会报"Warning: Invalid argument supplied for foreach() in"，可能因为某个值为空；
-
-   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count."</p></td>";
-   $summary[$ry]=$summary[$ry]+$count;
+  $sql_ss = "select count(*) from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `审晚` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
+  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());
+  $count=mysql_fetch_row($aa);
+   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count[0]."</p></td>";
+   $summary[$ry]=$summary[$ry]+$count[0];
    if($i==7){echo "</tr>";}
    $i++;
    unset($result1);
@@ -178,6 +117,6 @@ foreach($summary as $cc=>$vv){
 }
 
 
-$mysql->closeDb();
+mysql_close();
 ?>
 </table>
