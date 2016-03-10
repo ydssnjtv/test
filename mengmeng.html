@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script>
+$(document).on("pageinit","#pagetest",function(){
+  $("div").on("swiperight",function(){
+    $.mobile.changePage("mengmeng.html#page1", {transition: "slide", reverse:true},false);
+  });                       
+});
+</script>
+<style type="text/css">
+<!--
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+<div data-role="page" id="page1">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+  <img src="images/mengmeng/1.jpg" alt="1月" width="100%"> 
+  </div>
+
+  <div data-role="button" >
+  <a href="#page2" data-role="button">下一月</a>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page2">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/2.jpg" alt="2月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page1" data-role="button">上一月</a>
+    <a href="#page3" data-role="button">下一月</a>
+	<a href="#pagetest" data-role="button">别按</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page3">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/3.jpg" alt="3月" width="100%">  
+  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page2" data-role="button">上一月</a>
+    <a href="#page4" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page4">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/4.jpg" alt="4月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page3" data-role="button">上一月</a>
+    <a href="#page5" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page5">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/5.jpg" alt="5月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page4" data-role="button">上一月</a>
+    <a href="#page6" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page6">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/6.jpg" alt="6月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page5" data-role="button">上一月</a>
+    <a href="#page7" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page7">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/7.jpg" alt="7月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page6" data-role="button">上一月</a>
+    <a href="#page8" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page8">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/8.jpg" alt="8月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page7" data-role="button">上一月</a>
+    <a href="#page9" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page9">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/9.jpg" alt="9月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page8" data-role="button">上一月</a>
+    <a href="#page10" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page10">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/10.jpg" alt="10月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page9" data-role="button">上一月</a>
+    <a href="#page11" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page11">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/11.jpg" alt="11月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page10" data-role="button">上一月</a>
+    <a href="#page12" data-role="button">下一月</a>
+	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="page12">
+  <div data-role="header"> 
+    <div align="center"><h1>萌萌 2016</h1>
+    </div>
+  </div>
+  <div data-role="content">
+    <img src="images/mengmeng/12.jpg" alt="12月" width="100%">  </div>
+	
+	<div data-role="controlgroup" data-type="horizontal" align="center">
+    <a href="#page11" data-role="button">上一月</a>
+   	<a href="#page1" data-role="button">回首页</a>
+    </div>
+	
+  <div data-role="footer" data-position="fixed">
+  <h1>Ydss</h1>
+  </div>
+</div> 
+
+<div data-role="page" id="pagetest">
+  <div data-role="header">
+    <h1>向右快速滑</h1>
+  </div>
+
+  <div data-role="content">    
+	<img src="images/mengmeng/1.jpg" width="100%"> 
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h1>页脚文本</h1>
+  </div>
+</div> 
+
+
+</body>
+</html>
