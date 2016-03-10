@@ -53,7 +53,7 @@ $sql = "SELECT * FROM `banbiao` WHERE `日期` BETWEEN '$time' AND '$timeend1'";
            echo "<tr>";
 	   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$value['日期'].'</p></td>';
 		   
-		   $riqi=strtotime($value['日期']);//尽管日期在MYSQL里是日期格式，但取出的$value['日期']只是字符串格式，不是时间，将其转为时间戳；
+	   $riqi=strtotime($value['日期']);//尽管日期在MYSQL里是日期格式，但取出的$value['日期']只是字符串格式，不是时间，将其转为时间戳；
 		   $weekarray=array("日","一","二","三","四","五","六");
   		   $zhouji=$weekarray[date("w",$riqi)];//换算成周几并转换成汉字表达，date("w",$riqi)是将日期转换为0～6的星期几；
            echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
