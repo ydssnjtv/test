@@ -1,10 +1,10 @@
-<?php
+﻿<?php
 function linkdb(){
 //连接新浪云主站及数据库
-$hostname = SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT;
-$dbuser = SAE_MYSQL_USER;
-$dbpass = SAE_MYSQL_PASS;
-$dbname = SAE_MYSQL_DB;
+$hostname = '192.168.1.11'.':'.'3306';
+$dbuser = "7f1a7a89-fe9b";
+$dbpass = "368a98a2-2d68";
+$dbname = "192.168.1.11";
 //$link = mysql_connect($hostname, $dbuser, $dbpass);   ~~~mysql_connect过时了，被下面的mysqli_connect取代，但是后者的参数定义不一样的，端口放在最后！！
 $link = mysqli_connect(SAE_MYSQL_HOST_M, SAE_MYSQL_USER, SAE_MYSQL_PASS, SAE_MYSQL_DB, SAE_MYSQL_PORT);
 //mysql_query("SET NAMES UTF8");  据说是解决乱码的
