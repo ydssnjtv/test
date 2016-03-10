@@ -2,7 +2,7 @@
 function linkdb(){
 //连接新浪云主站及数据库
 $hostname = '192.168.1.11';
-$dbport = '3306'
+$dbport = '3306';
 $dbuser = "7f1a7a89-fe9b";
 $dbpass = "368a98a2-2d68";
 $dbname = "dfd61754ba8e04374a91b8bdf5344e36a";
