@@ -27,7 +27,7 @@
 
 				$fmt = filemtime($filePath);
 
-				echo "<span style='color:#666'>(".date("Y-m-d H:i:s",$fmt).")</span> ".$filePath."<br/>";
+				echo "<span style='color:#666'>(".date("Y-m-d H:i:s",$fmt).")</span> ".$dir."/".$file."<br/>";
 
 			}
 
