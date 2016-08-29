@@ -11,5 +11,6 @@ function panduan($time){
 //	$sql_pd = "SELECT * FROM `banbiao` WHERE `日期` > '$time'";
 //	$result_pd = $mysql->getData($sql_pd);
 
-	if($time>date("Y-m-d",strtotime("+1 month"))){die("<p  style='text-align:center;font-size:45px;color:red;font-weight: bold'>你太心急了，还没排呢！</p>'");}}
+//	if($time>date("Y-m-d",strtotime("+1 month"))){die("<p  style='text-align:center;font-size:45px;color:red;font-weight: bold'>你太心急了，还没排呢！</p>'");}
+	}
 ?>
