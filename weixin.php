@@ -60,7 +60,7 @@ class wechatCallbackapiTest
 						<Articles>
 						<item>
 						<Title><![CDATA[排班表]]></Title>
-						<Description><![CDATA[请点击图片]></Description>
+						<Description><![CDATA[请点击图片]]></Description>
 						<PicUrl><!CDATA[http://ydssnjtv.carp.mopaasapp.com/images/banbiao.jpg]]></PicUrl>
 						<Url><!CDATA[http://ydssnjtv.carp.mopaasapp.com/banbiao.html]]></Url>
 						</item>
