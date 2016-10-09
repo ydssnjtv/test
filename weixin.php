@@ -1,11 +1,13 @@
 ﻿<?php
 define("TOKEN", "ydssnjtv");
 $wechatObj = new wechatCallbackapiTest();
+
 if (isset($_GET['echostr'])) {
     $wechatObj->valid();
 }else{
     $wechatObj->responseMsg();
 }
+/*  来的消息含echostr字符串，就去valid函数进行身份验证，否则就用responsMsg函数进行消息回复 */
 
 class wechatCallbackapiTest
 {
