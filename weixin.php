@@ -56,7 +56,7 @@ class wechatCallbackapiTest
                         <Content><![CDATA[%s]]></Content>
                         <FuncFlag>0</FuncFlag>
                         </xml>";
-            if($keyword == "?" || $keyword == "£¿")
+            if($keyword <> null)
             {
                 $msgType = "text";
                 $contentStr = date("Y-m-d H:i:s",time());
