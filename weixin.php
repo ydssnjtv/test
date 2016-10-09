@@ -48,7 +48,32 @@ class wechatCallbackapiTest
             $toUsername = $postObj->ToUserName;
             $keyword = trim($postObj->Content);
             $time = time();
-            $textTpl = "<xml>
+
+            if($keyword == "1")
+			{
+				$textTpl = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+						<ArticleCount>1</ArticleCount>
+						<Articles>
+						<item>
+						<Title><![CDATA[排班表]]></Title>
+						<Description><![CDATA[请点击图片]></Description>
+						<PicUrl><!CDATA[http://ydssnjtv.carp.mopaasapp.com/images/banbiao.jpg]]></PicUrl>
+						<Url><!CDATA[http://ydssnjtv.carp.mopaasapp.com/banbiao.html]]></Url>
+						</item>
+						</Articles>
+                        <FuncFlag>0</FuncFlag>
+                        </xml>";
+				$msgType = "news";
+				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
+                echo $resultStr;
+			}
+			else if($keyword <> null)
+            {
+                $textTpl = "<xml>
                         <ToUserName><![CDATA[%s]]></ToUserName>
                         <FromUserName><![CDATA[%s]]></FromUserName>
                         <CreateTime>%s</CreateTime>
@@ -56,16 +81,11 @@ class wechatCallbackapiTest
                         <Content><![CDATA[%s]]></Content>
                         <FuncFlag>0</FuncFlag>
                         </xml>";
-            if($keyword <> null)
-            {
-                $msgType = "text";
-                $contentStr = "输入班表--查询班表，输入日历--显示日历";
+				$msgType = "text";
+                $contentStr = "输入“1”--查询班表，输入“2”--显示日历";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
             }
-        }else{
-            echo "error";
-            exit;
         }
     }
 }
