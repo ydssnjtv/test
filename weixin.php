@@ -59,7 +59,7 @@ class wechatCallbackapiTest
             if($keyword <> null)
             {
                 $msgType = "text";
-                $contentStr = date("Y-m-d H:i:s",time());
+                $contentStr = "输入班表--查询班表，输入日历--显示日历";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
             }
