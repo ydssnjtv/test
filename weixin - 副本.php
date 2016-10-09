@@ -72,34 +72,8 @@ class wechatCallbackapiTest
 				$msgType = "news";
 				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
                 echo $resultStr;
-				exit;
 			}
-			
-			if($keyword == "2")
-			{
-				$textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-						<ArticleCount>1</ArticleCount>
-						<Articles>
-						<item>
-						<Title><![CDATA[新版日历]]></Title>
-						<Description><![CDATA[请点击图片]]></Description>
-						<PicUrl><![CDATA[http://ydssnjtv.carp.mopaasapp.com/images/mengmeng_new.jpg]]></PicUrl>
-						<Url><![CDATA[http://ydssnjtv.carp.mopaasapp.com/mengmeng_new.html]]></Url>
-						</item>
-						</Articles>
-                        <FuncFlag>0</FuncFlag>
-                        </xml>";
-				$msgType = "news";
-				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
-                echo $resultStr;
-				exit;
-			}
-			
-			if($keyword <> null)
+			else if($keyword <> null)
             {
                 $textTpl = "<xml>
                         <ToUserName><![CDATA[%s]]></ToUserName>
@@ -113,9 +87,7 @@ class wechatCallbackapiTest
                 $contentStr = "输入“1”--查询班表，输入“2”--显示日历";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
-				exit;
             }
-			
         }
     }
 }
