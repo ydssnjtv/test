@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 define("TOKEN", "ydssnjtv");
 $wechatObj = new wechatCallbackapiTest();
 if (isset($_GET['echostr'])) {
@@ -59,7 +59,7 @@ class wechatCallbackapiTest
             if($keyword <> null)
             {
                 $msgType = "text";
-                $contentStr = "ÊäÈë°à±í--²éÑ¯°à±í£¬ÊäÈëÈÕÀú--ÏÔÊ¾ÈÕÀú";
+                $contentStr = "è¾“å…¥ç­è¡¨--æŸ¥è¯¢ç­è¡¨ï¼Œè¾“å…¥æ—¥å†--æ˜¾ç¤ºæ—¥å†";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
             }
