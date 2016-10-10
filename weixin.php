@@ -81,20 +81,13 @@ class wechatCallbackapiTest
 			if($type=="event" and $cus=="subscribe")
 			{
                $textTpl = "<xml>
-
-<ToUserName><![CDATA[%s]]></ToUserName>
-
-<FromUserName><![CDATA[%s]]></FromUserName>
-
-<CreateTime>%s</CreateTime>
-
-<MsgType><![CDATA[%s]]></MsgType>
-
-<Content><![CDATA[%s]]></Content>
-
-<FuncFlag>0</FuncFlag>
-
-</xml>";
+	<ToUserName><![CDATA[%s]]></ToUserName>
+	<FromUserName><![CDATA[%s]]></FromUserName>
+	<CreateTime>%s</CreateTime>
+	<MsgType><![CDATA[%s]]></MsgType>
+	<Content><![CDATA[%s]]></Content>
+	<FuncFlag>0</FuncFlag>
+	</xml>";
 			   $contentStr = "感谢关注\n请回复任意查看菜单";
                $msgType = "text";
                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
