@@ -77,17 +77,30 @@ class wechatCallbackapiTest
 		    //如果是新用户订阅消息，则返回欢迎和菜单消息
 			
 			$type = $postObj->MsgType;//定义变量
+            $cus = $postObj->Event;//定义变量
+			if($type=="event" and $cus=="subscribe")
+			{
+               $textTpl = "<xml>
 
-                $cus = $postObj->Event;//定义变量
-				if($type=="event" and $cus=="subscribe"){
+<ToUserName><![CDATA[%s]]></ToUserName>
 
-$contentStr = "感谢关注\n请回复任意查看菜单";
+<FromUserName><![CDATA[%s]]></FromUserName>
 
-$msgType = "text";
+<CreateTime>%s</CreateTime>
 
-$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+<MsgType><![CDATA[%s]]></MsgType>
 
-                echo $resultStr;}
+<Content><![CDATA[%s]]></Content>
+
+<FuncFlag>0</FuncFlag>
+
+</xml>";
+			   $contentStr = "感谢关注\n请回复任意查看菜单";
+               $msgType = "text";
+               $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+               echo $resultStr;
+			   exit;
+			}
 			
 		
             if($keyword == "1")
