@@ -7,11 +7,11 @@
 define("TOKEN", "ydssnjtv");
 $wechatObj = new wechatCallbackapiTest();
 
-if (isset($_GET["echostr"]))
-	{$wechatObj->valid();
-	}else
-	{$wechatObj->responseMsg();
-	}
+if (isset($_GET['echostr'])) {
+    $wechatObj->valid();
+}else{
+    $wechatObj->responseMsg();
+}
 	
 
 class wechatCallbackapiTest
@@ -21,7 +21,8 @@ class wechatCallbackapiTest
         $echoStr = $_GET["echostr"];
 
         //valid signature , option
-        if($this->checkSignature()){
+        if($this->checkSignature())
+		{
             echo $echoStr;
             exit;
         }
@@ -37,40 +38,44 @@ class wechatCallbackapiTest
         sort($tmpArr);
         $tmpStr = implode( $tmpArr );
         $tmpStr = sha1( $tmpStr );
-        if( $tmpStr == $signature ){
+        if( $tmpStr == $signature )
+		{
             return true;
-        }else{
+        }else
+		{
             return false;
         }
-    }
+      }
 
     public function responseMsg()
     {
-        //get post data, May be due to the different environments
-        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-
-        //extract post data
-        if (!empty($postStr)){
-                
-                $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-                $RX_TYPE = trim($postObj->MsgType);
-
-                switch($RX_TYPE)
-                {
-                    case "text":
-                        $resultStr = $this->handleText($postObj);
-                        break;
-                        $resultStr = $this->handleEvent($postObj);
-                        break;
-                    default:
-                        $resultStr = "Unknow msg type: ".$RX_TYPE;
-                        break;
-                }
-                echo $resultStr;    //?????????????
-        }else {
-            echo "";
-            exit;
-        }
+			//get post data, May be due to the different environments
+			$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+	
+			//extract post data
+			if (!empty($postStr))
+			{
+					
+					$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+					$RX_TYPE = trim($postObj->MsgType);
+	
+						switch($RX_TYPE)
+						{
+							case "text":
+								$resultStr = $this->handleText($postObj);
+								break;
+								$resultStr = $this->handleEvent($postObj);
+								break;
+							default:
+								$resultStr = "Unknow msg type: ".$RX_TYPE;
+								break;
+				     	  }
+					//echo $resultStr;    //?????????????
+			 }else
+			 {
+				echo "???";
+				exit;
+			  }
     }
 
     public function handleText($postObj)
