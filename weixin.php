@@ -1,170 +1,128 @@
 ﻿<?php
+/**
+  * wechat php test
+  */
+
+//define your token
 define("TOKEN", "ydssnjtv");
 $wechatObj = new wechatCallbackapiTest();
-
-if (isset($_GET['echostr'])) {
-    $wechatObj->valid();
-}else{
-    $wechatObj->responseMsg();
-}
-/*  来的消息含echostr字符串，就去valid函数进行身份验证，否则就用responsMsg函数进行消息回复 */
+$wechatObj->responseMsg();
+$wechatObj->valid();
 
 class wechatCallbackapiTest
 {
     public function valid()
     {
         $echoStr = $_GET["echostr"];
+
+        //valid signature , option
         if($this->checkSignature()){
-            header('content-type:text');
             echo $echoStr;
             exit;
         }
+    }
+
+    public function responseMsg()
+    {
+        //get post data, May be due to the different environments
+        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+
+        //extract post data
+        if (!empty($postStr)){
+                
+                $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+                $RX_TYPE = trim($postObj->MsgType);
+
+                switch($RX_TYPE)
+                {
+                    case "text":
+                        $resultStr = $this->handleText($postObj);
+                        break;
+                    case "event":
+                        $resultStr = $this->handleEvent($postObj);
+                        break;
+                    default:
+                        $resultStr = "Unknow msg type: ".$RX_TYPE;
+                        break;
+                }
+                echo $resultStr;
+        }else {
+            echo "";
+            exit;
+        }
+    }
+
+    public function handleText($postObj)
+    {
+        $fromUsername = $postObj->FromUserName;
+        $toUsername = $postObj->ToUserName;
+        $keyword = trim($postObj->Content);
+        $time = time();
+        $textTpl = "<xml>
+                    <ToUserName><![CDATA[%s]]></ToUserName>
+                    <FromUserName><![CDATA[%s]]></FromUserName>
+                    <CreateTime>%s</CreateTime>
+                    <MsgType><![CDATA[%s]]></MsgType>
+                    <Content><![CDATA[%s]]></Content>
+                    <FuncFlag>0</FuncFlag>
+                    </xml>";             
+        if(!empty( $keyword ))
+        {
+            $msgType = "text";
+            $contentStr = "Welcome to wechat world!";
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+            echo $resultStr;
+        }else{
+            echo "Input something...";
+        }
+    }
+
+    public function handleEvent($object)
+    {
+        $contentStr = "";
+        switch ($object->Event)
+        {
+            case "subscribe":
+                $contentStr = "感谢您关注【卓锦苏州】"."\n"."微信号：zhuojinsz"."\n"."卓越锦绣，名城苏州，我们为您提供苏州本地生活指南，苏州相关信息查询，做最好的苏州微信平台。"."\n"."目前平台功能如下："."\n"."【1】 查天气，如输入：苏州天气"."\n"."【2】 查公交，如输入：苏州公交178"."\n"."【3】 翻译，如输入：翻译I love you"."\n"."【4】 苏州信息查询，如输入：苏州观前街"."\n"."更多内容，敬请期待...";
+                break;
+            default :
+                $contentStr = "Unknow Event: ".$object->Event;
+                break;
+        }
+        $resultStr = $this->responseText($object, $contentStr);
+        return $resultStr;
+    }
+    
+    public function responseText($object, $content, $flag=0)
+    {
+        $textTpl = "<xml>
+                    <ToUserName><![CDATA[%s]]></ToUserName>
+                    <FromUserName><![CDATA[%s]]></FromUserName>
+                    <CreateTime>%s</CreateTime>
+                    <MsgType><![CDATA[text]]></MsgType>
+                    <Content><![CDATA[%s]]></Content>
+                    <FuncFlag>%d</FuncFlag>
+                    </xml>";
+        $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content, $flag);
+        return $resultStr;
     }
 
     private function checkSignature()
     {
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"];
-
+        $nonce = $_GET["nonce"];    
+                
         $token = TOKEN;
         $tmpArr = array($token, $timestamp, $nonce);
-        sort($tmpArr, SORT_STRING);
+        sort($tmpArr);
         $tmpStr = implode( $tmpArr );
         $tmpStr = sha1( $tmpStr );
-
+        
         if( $tmpStr == $signature ){
             return true;
         }else{
             return false;
-        }
-    }
-
-    public function responseMsg()
-    {
-        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-        //接受用户端发送过来的xml数据
-        if (!empty($postStr)){
-            $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
-            $fromUsername = $postObj->FromUserName;
-            $toUsername = $postObj->ToUserName;
-            $keyword = trim($postObj->Content);
-            $time = time();
-            //通过simplexml进行xml解析
-	        
-//			$receive_msgtype = $postObj->MsgType;
-//			if ($receive_msgtype == "event")
-//			{
-//				$receive_event = $postobj->Event;
-//				if ($receive_event == "Subcribe")
-//				{
-//					$textTpl = "<xml>
-//                        <ToUserName><![CDATA[%s]]></ToUserName>
-//                        <FromUserName><![CDATA[%s]]></FromUserName>
-//                        <CreateTime>%s</CreateTime>
-//                        <MsgType><![CDATA[%s]]></MsgType>
-//                        <Content><![CDATA[%s]]></Content>
-//                        <FuncFlag>0</FuncFlag>
-//                        </xml>";
-//				$msgType = "text";
-//                $contentStr = "欢迎订阅Ydss的公众号。\n由于微信取消了自定义菜单，请输入任意字符以获取文本操。作菜单";
-//                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-//                echo $resultStr;
-//				exit;
-//				}
-//			exit;
-//			}
-		    //如果是新用户订阅消息，则返回欢迎和菜单消息
-			
-			$type = $postObj->MsgType;//定义变量
-            $cus = $postObj->Event;//定义变量
-			if($type=="event" and $cus=="subscribe")
-			{
-               $textTpl = "<xml>
-	<ToUserName><![CDATA[%s]]></ToUserName>
-	<FromUserName><![CDATA[%s]]></FromUserName>
-	<CreateTime>%s</CreateTime>
-	<MsgType><![CDATA[%s]]></MsgType>
-	<Content><![CDATA[%s]]></Content>
-	<FuncFlag>0</FuncFlag>
-	</xml>";
-			   $contentStr = "感谢关注\n请回复任意查看菜单";
-               $msgType = "text";
-               $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-               echo $resultStr;
-			   exit;
-			}
-			
-		
-            if($keyword == "1")
-			{
-				$textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-						<ArticleCount>1</ArticleCount>
-						<Articles>
-						<item>
-						<Title><![CDATA[排班表]]></Title>
-						<Description><![CDATA[请点击图片]]></Description>
-						<PicUrl><![CDATA[http://ydssnjtv.carp.mopaasapp.com/images/banbiao.jpg]]></PicUrl>
-						<Url><![CDATA[http://ydssnjtv.carp.mopaasapp.com/banbiao.html]]></Url>
-						</item>
-						</Articles>
-                        <FuncFlag>0</FuncFlag>
-                        </xml>";
-				$msgType = "news";
-				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
-                echo $resultStr;
-				exit;
-			}
-			//如果对方输入“1”则返回班表页面；
-			
-			
-			if($keyword == "2")
-			{
-				$textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-						<ArticleCount>1</ArticleCount>
-						<Articles>
-						<item>
-						<Title><![CDATA[新版日历]]></Title>
-						<Description><![CDATA[请点击图片]]></Description>
-						<PicUrl><![CDATA[http://ydssnjtv.carp.mopaasapp.com/images/mengmeng_new.jpg]]></PicUrl>
-						<Url><![CDATA[http://ydssnjtv.carp.mopaasapp.com/mengmeng_new.html]]></Url>
-						</item>
-						</Articles>
-                        <FuncFlag>0</FuncFlag>
-                        </xml>";
-				$msgType = "news";
-				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
-                echo $resultStr;
-				exit;
-			}
-			//如果对方输入“2”则返回日历页面；
-			
-			
-			if($keyword <> null)
-            {
-                $textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-                        <Content><![CDATA[%s]]></Content>
-                        <FuncFlag>0</FuncFlag>
-                        </xml>";
-				$msgType = "text";
-                $contentStr = "输入“1”--查询班表，输入“2”--显示日历";
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-				exit;
-            }
-			//如果对方输入其他文本则返回日历页面；
         }
     }
 }
