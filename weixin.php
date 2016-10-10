@@ -104,7 +104,6 @@ class wechatCallbackapiTest
 			}
 			//如果对方输入“2”则返回日历页面；
 			
-			
 			if($keyword <> null)
             {
                 $textTpl = "<xml>
