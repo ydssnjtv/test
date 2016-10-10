@@ -116,7 +116,7 @@ class wechatCallbackapiTest
                         <FuncFlag>0</FuncFlag>
                         </xml>";
 				$msgType = "text";
-                $contentStr = "输入“1”--查询班表，输入“2”--显示日历";
+                $contentStr = "输入“1”--查询班表"."\n"."输入“2”--显示日历";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
 				exit;
