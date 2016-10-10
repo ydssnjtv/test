@@ -55,8 +55,8 @@ class wechatCallbackapiTest
 			$receive_msgtype = $postObj->MsgType;
 			if ($receive_msgtype == "event")
 			{
-				$receive_event = $postobj->event;
-				if ($receive_event == 'Subcribe')
+				$receive_event = $postobj->Event;
+				if ($receive_event == "Subcribe")
 				{
 					$textTpl = "<xml>
                         <ToUserName><![CDATA[%s]]></ToUserName>
@@ -67,7 +67,7 @@ class wechatCallbackapiTest
                         <FuncFlag>0</FuncFlag>
                         </xml>";
 				$msgType = "text";
-                $contentStr = "欢迎订阅Ydss的公众号，由于微信取消了自定义菜单，请输入任意字符以获取文本操作菜单";
+                $contentStr = "欢迎订阅Ydss的公众号。\n由于微信取消了自定义菜单，请输入任意字符以获取文本操。作菜单";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
 				exit;
