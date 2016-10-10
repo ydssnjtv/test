@@ -52,29 +52,42 @@ class wechatCallbackapiTest
             $time = time();
             //通过simplexml进行xml解析
 	        
-			$receive_msgtype = $postObj->MsgType;
-			if ($receive_msgtype == "event")
-			{
-				$receive_event = $postobj->Event;
-				if ($receive_event == "Subcribe")
-				{
-					$textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-                        <Content><![CDATA[%s]]></Content>
-                        <FuncFlag>0</FuncFlag>
-                        </xml>";
-				$msgType = "text";
-                $contentStr = "欢迎订阅Ydss的公众号。\n由于微信取消了自定义菜单，请输入任意字符以获取文本操。作菜单";
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                echo $resultStr;
-				exit;
-				}
-			exit;
-			}
+//			$receive_msgtype = $postObj->MsgType;
+//			if ($receive_msgtype == "event")
+//			{
+//				$receive_event = $postobj->Event;
+//				if ($receive_event == "Subcribe")
+//				{
+//					$textTpl = "<xml>
+//                        <ToUserName><![CDATA[%s]]></ToUserName>
+//                        <FromUserName><![CDATA[%s]]></FromUserName>
+//                        <CreateTime>%s</CreateTime>
+//                        <MsgType><![CDATA[%s]]></MsgType>
+//                        <Content><![CDATA[%s]]></Content>
+//                        <FuncFlag>0</FuncFlag>
+//                        </xml>";
+//				$msgType = "text";
+//                $contentStr = "欢迎订阅Ydss的公众号。\n由于微信取消了自定义菜单，请输入任意字符以获取文本操。作菜单";
+//                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+//                echo $resultStr;
+//				exit;
+//				}
+//			exit;
+//			}
 		    //如果是新用户订阅消息，则返回欢迎和菜单消息
+			
+			$type = $postObj->MsgType;//定义变量
+
+                $cus = $postObj->Event;//定义变量
+				if($type=="event" and $cus=="subscribe"){
+
+$contentStr = "感谢关注\n请回复任意查看菜单";
+
+$msgType = "text";
+
+$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+
+                echo $resultStr;}
 			
 		
             if($keyword == "1")
