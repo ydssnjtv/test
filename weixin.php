@@ -6,8 +6,13 @@
 //define your token
 define("TOKEN", "ydssnjtv");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->responseMsg();
-$wechatObj->valid();
+
+if (isset($_GET["echostr"]))
+	{$wechatObj->valid();
+	}else
+	{$wechatObj->responseMsg();
+	}
+	
 
 class wechatCallbackapiTest
 {
@@ -19,6 +24,23 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             echo $echoStr;
             exit;
+        }
+    }
+	
+	private function checkSignature()
+    {
+        $signature = $_GET["signature"];
+        $timestamp = $_GET["timestamp"];
+        $nonce = $_GET["nonce"];    
+        $token = TOKEN;
+        $tmpArr = array($token, $timestamp, $nonce);
+        sort($tmpArr);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+        if( $tmpStr == $signature ){
+            return true;
+        }else{
+            return false;
         }
     }
 
@@ -83,7 +105,7 @@ class wechatCallbackapiTest
         switch ($object->Event)
         {
             case "subscribe":
-                $contentStr = "感谢您关注【卓锦苏州】"."\n"."微信号：zhuojinsz"."\n"."卓越锦绣，名城苏州，我们为您提供苏州本地生活指南，苏州相关信息查询，做最好的苏州微信平台。"."\n"."目前平台功能如下："."\n"."【1】 查天气，如输入：苏州天气"."\n"."【2】 查公交，如输入：苏州公交178"."\n"."【3】 翻译，如输入：翻译I love you"."\n"."【4】 苏州信息查询，如输入：苏州观前街"."\n"."更多内容，敬请期待...";
+                $contentStr = "感谢您关注Ydss的微信公众号"."\n"."目前平台功能如下："."\n"."【1】 查询班表和值班量统计"."\n"."【2】 日历"."\n"."更多内容，敬请期待...";
                 break;
             default :
                 $contentStr = "Unknow Event: ".$object->Event;
@@ -107,24 +129,7 @@ class wechatCallbackapiTest
         return $resultStr;
     }
 
-    private function checkSignature()
-    {
-        $signature = $_GET["signature"];
-        $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"];    
-                
-        $token = TOKEN;
-        $tmpArr = array($token, $timestamp, $nonce);
-        sort($tmpArr);
-        $tmpStr = implode( $tmpArr );
-        $tmpStr = sha1( $tmpStr );
-        
-        if( $tmpStr == $signature ){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 }
 
 ?>
