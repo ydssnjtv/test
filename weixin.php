@@ -76,7 +76,52 @@ class wechatCallbackapiTest
                 echo $resultStr;
 				exit;
 			}
-	
+			//如果对方输入“1”则返回班表页面；
+			
+			
+			if($keyword == "2")
+			{
+				$textTpl = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+						<ArticleCount>1</ArticleCount>
+						<Articles>
+						<item>
+						<Title><![CDATA[新版日历]]></Title>
+						<Description><![CDATA[请点击图片]]></Description>
+						<PicUrl><![CDATA[http://ydssnjtv.carp.mopaasapp.com/images/mengmeng_new.jpg]]></PicUrl>
+						<Url><![CDATA[http://ydssnjtv.carp.mopaasapp.com/mengmeng_new.html]]></Url>
+						</item>
+						</Articles>
+                        <FuncFlag>0</FuncFlag>
+                        </xml>";
+				$msgType = "news";
+				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
+                echo $resultStr;
+				exit;
+			}
+			//如果对方输入“2”则返回日历页面；
+			
+			
+			if($keyword <> null)
+            {
+                $textTpl = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+                        <Content><![CDATA[%s]]></Content>
+                        <FuncFlag>0</FuncFlag>
+                        </xml>";
+				$msgType = "text";
+                $contentStr = "输入“1”--查询班表，输入“2”--显示日历";
+                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                echo $resultStr;
+				exit;
+            }
+			//如果对方输入其他文本则返回日历页面；	
         }
 
     public function handleEvent($object)
