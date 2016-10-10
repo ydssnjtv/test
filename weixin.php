@@ -163,8 +163,6 @@ class wechatCallbackapiTest
         $resultStr = sprintf($textTpl, $object->FromUserName, $object->ToUserName, time(), $content, $flag);
         return $resultStr;
     }
-
-
 }
 
 ?>
