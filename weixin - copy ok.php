@@ -51,33 +51,24 @@ class wechatCallbackapiTest
         $toUsername = $postObj->ToUserName;
         $keyword = trim($postObj->Content);
         $time = time();
-		
-		
-		  if($keyword == "1")
-			{
-				$textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[%s]]></MsgType>
-						<ArticleCount>1</ArticleCount>
-						<Articles>
-						<item>
-						<Title><![CDATA[排班表]]></Title>
-						<Description><![CDATA[请点击图片]]></Description>
-						<PicUrl><![CDATA[http://ydssnjtv.carp.mopaasapp.com/images/banbiao.jpg]]></PicUrl>
-						<Url><![CDATA[http://ydssnjtv.carp.mopaasapp.com/banbiao.html]]></Url>
-						</item>
-						</Articles>
-                        <FuncFlag>0</FuncFlag>
-                        </xml>";
-				$msgType = "news";
-				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
-                echo $resultStr;
-				exit;
-			}
-	
+        $textTpl = "<xml>
+                    <ToUserName><![CDATA[%s]]></ToUserName>
+                    <FromUserName><![CDATA[%s]]></FromUserName>
+                    <CreateTime>%s</CreateTime>
+                    <MsgType><![CDATA[%s]]></MsgType>
+                    <Content><![CDATA[%s]]></Content>
+                    <FuncFlag>0</FuncFlag>
+                    </xml>";             
+        if(!empty( $keyword ))
+        {
+            $msgType = "text";
+            $contentStr = "Welcome to wechat world!";
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+            echo $resultStr;
+        }else{
+            echo "Input something...";
         }
+    }
 
     public function handleEvent($object)
     {
