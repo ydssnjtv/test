@@ -132,6 +132,8 @@ class wechatCallbackapiTest
         {
             case "subscribe": $contentStr = "感谢您关注Ydss的微信号"."\n"."目前平台功能如下："."\n"."【1】 查班表和值班量"."\n"."【2】 日历"."\n"."【3】 更多内容，敬请期待...";
                 break;
+			case "LOCATION": $contentStr = "你的位置是纬度".$object->Latitude."，经度".$object->Longitude;
+			    break;
             default : $contentStr = "Unknow Event: ".$object->Event;
                 break;
         }
