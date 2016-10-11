@@ -6,6 +6,7 @@ $wechatObj->responseMsg();
 $wechatObj->valid(); 
 
 
+
 class wechatCallbackapiTest
 {
     public function valid()
