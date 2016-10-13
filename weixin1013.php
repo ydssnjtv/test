@@ -125,17 +125,19 @@ class wechatCallbackapiTest
 			//如果对方输入其他文本则返回日历页面；	
         }
 
-    public function handleEvent($postobj)
+    public function handleEvent($object)
     {
         $contentStr = "";
-        switch ($postobj->Event)
+        switch ($object->Event)
         {
             case "subscribe": $contentStr = "感谢您关注Ydss的微信号"."\n"."目前平台功能如下："."\n"."【1】 查班表和值班量"."\n"."【2】 日历"."\n"."【3】 更多内容，敬请期待...";
                 break;
-			default : $contentStr = "Unknow Event: ".$postobj->Event;
+			case "LOCATION": $contentStr = "纬度 ".$object->Latitude." 经度".$object->Longitude;
+			    break;
+			default : $contentStr = "Unknow Event: ".$object->Event;
                 break;
         }
-        $resultStr = $this->responseText($postobj, $contentStr);
+        $resultStr = $this->responseText($object, $contentStr);
         return $resultStr;
     }
     
