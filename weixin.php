@@ -52,7 +52,6 @@ class wechatCallbackapiTest
         $keyword = trim($postObj->Content);
         $time = time();
 		
-		
 		  if($keyword == "1")
 			{
 				$textTpl = "<xml>
