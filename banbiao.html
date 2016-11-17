@@ -47,7 +47,9 @@
  </form>
  <p>&nbsp;</p>
  <p>&nbsp;</p>
- <a href="#page1" data-role="button" data-inline="true" data-mini="true">你还可以查询月度值班量</a>
+ <p><a href="#page1" data-role="button" data-inline="true" data-mini="true">你还可以查询月度值班量</a>
+ </p>
+ <p><a href="#page2" data-role="button" data-inline="true" data-mini="true">甚至可以查询年度值班量啦！</a></p>
   </div>
     <div data-role="footer" data-position="fixed"> 
       <div align="right">
@@ -95,6 +97,34 @@
      <div data-role="footer" data-position="fixed"> 
       <div align="right">
       <h5>Ver.20160831 . By Ydss</h5></div>
+    </div>
+</div>
+
+<div data-role="page"  id="page2">
+  <div data-role="header">  
+   <a href="#pagehome" data-role="button" data-icon="home">首页</a> 
+   
+      <h3>请选择需要查询值班量的年份</h3></div>
+ 
+  <div data-role="content">
+ <form method="post" action="zhibanliang_year.php" data-ajax="false">
+   <p>
+     <label for="year">选择年</label>
+     <select name="year" id="year">
+       <option value="2015">2015</option>
+       <option value="2016" selected>2016</option>
+     </select>  
+     <br>
+     <input type="submit" value="提交">
+   </p>
+ </form>
+  <p>&nbsp;</p>
+ <p>&nbsp;</p>
+ <a href="#pagehome" data-role="button" data-inline="true" data-mini="true">返回值班表</a>
+ </div>
+     <div data-role="footer" data-position="fixed"> 
+      <div align="right">
+      <h5>Ver.20161117 . By Ydss</h5></div>
     </div>
 </div>
 
