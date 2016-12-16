@@ -15,7 +15,7 @@ require_once('panduan.php');
 require_once('connectdb.php');
 
 linkdb();
-$dbname = "7dc47f1132744";
+$dbname = "dfd61754ba8e04374a91b8bdf5344e36a";
 mysql_select_db($dbname) or die("不能选择数据库");
 
 echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造Mopaas Mysql数据库连接！<br/></p>";

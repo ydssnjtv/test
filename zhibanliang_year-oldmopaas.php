@@ -15,7 +15,7 @@ require_once('panduan.php');
 require_once('connectdb.php');
 
 linkdb();
-$dbname = "7dc47f1132744";
+$dbname = "dfd61754ba8e04374a91b8bdf5344e36a";
 mysql_select_db($dbname) or die("不能选择数据库");
 
 echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造Mopaas Mysql数据库连接！<br/></p>";
@@ -23,11 +23,9 @@ echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造Mopaas 
 //将表单传入的时间赋值，生成查询时间变量；
 //echo $_POST['year']."年".$_POST['month']."月<br/><br/>";
 $year=$_POST['year'];
-$month=$_POST['month'];
 //echo $year.'年'.$month.'月<br/><br/>';
-$time=date("Y-m-d",mktime(0,0,0,$month,1,$year));
-$timeend=date("Y-m-d",mktime(0,0,0,$month+1,1,$year));//下个月的第一天
-$timeend1=date("Y-m-d", strtotime("$timeend -1 days"));//本月的最后一天
+$time=date("Y-m-d",mktime(0,0,0,1,1,$year));
+$timeend1=date("Y-m-d",mktime(0,0,0,12,31,$year));
 echo "<p style='color:red;font-size:32px;text-align:center;'>你选择的时间是：".$year.'年'.$month.'月<br/></p>';
 panduan($time);
 //具体查询和结果显示
@@ -40,7 +38,7 @@ $i=0;
 while($i<=7){
   $ry=$renyuan[$i];
   $sql_ss = "select count(*) from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `早班` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
-  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());
+  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());//count计数无法直接返回值，返回的只是一个数列，因此要用这个办法，详细可以参考http://www.5ixuexiwang.com/html/biancheng/php/2014/0508/1951.html
   $count=mysql_fetch_row($aa);
    echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count[0]."</p></td>";
    $summary[$ry]=$summary[$ry]+$count[0];//这是计算最后每人合计总班次的；
