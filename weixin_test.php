@@ -14,18 +14,10 @@ $tmpStr = implode($tmpArr);
 $tmpStr = sha1($tmpStr);
 
 if( $tmpStr == $signature ){
-
+ob_clean();
 echo $echostr;
-
 }else{
-
 return false;
-
 }
-
-
-
-
-
 
 ?>
