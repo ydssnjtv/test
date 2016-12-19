@@ -7,7 +7,8 @@ define("TOKEN", "ydssnjtv");
 
 
 
-$wechatObj = new wechatCallbackapiTest();
+//$wechatObj = new wechatCallbackapiTest();
+//$wechatObj->valid();
 $wechatObj->responseMsg();
 $wechatObj->valid(); 
 
