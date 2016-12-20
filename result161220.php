@@ -41,31 +41,23 @@ $a2=mysql_query($sql)or die("对不起，读入数据时出错了！". mysql_err
 while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetch_array() 是 mysql_fetch_row() 的扩展版本。除了将数据以数字索引方式储存在数组中之外，还可以将数据作为关联索引储存，用字段名作为键名。也就是如果下标是字符串，会多返回一份下标是字符串的结果。
 {
 	echo "<tr>";
-		   
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
 		   
 		   $riqi=strtotime($result[0]);//尽管日期在MYSQL里是日期格式，但取出的$value['日期']只是字符串格式，不是时间，将其转为时间戳；
 		   $weekarray=array("日","一","二","三","四","五","六");
   		   $zhouji=$weekarray[date("w",$riqi)];//换算成周几并转换成汉字表达，date("w",$riqi)是将日期转换为0～6的星期几；
            if  ($zhouji=="日" or  $zhouji=="六") 
-           {
-			   echo "<p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
-			   echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
-			   echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
-		       echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
-		       echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[3].'</p></td>';
-		       echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[4].'</p></td>';
-		       echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[5].'</p></td>';
+           {echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
             } else 
            {
                   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
-				  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
-		          echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
-		          echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[3].'</p></td>';
-		          echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[4].'</p></td>';
-		          echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[5].'</p></td>';
             }
 		//以上if。。then。。else是为了让周末两天特殊颜色显示；   
-
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[3].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[4].'</p></td>';
+		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[5].'</p></td>';
 		  echo "</tr>";
 		
 			//要获得星期几，可以参考http://www.111cn.net/phper/php/51257.htm；
