@@ -14,7 +14,6 @@ mysql_query("SET NAMES UTF8");
 if (!$link) {die('Could not connect: '.mysql_error());}
 //echo "成功连接新浪云主机！<br/>";
   
-
 	 echo "<p style='color:black;font-size:32px;text-align:center;'>现在是".date('y-m-d H:i:s',time()).',已成功连接新版Mopaas云主机！</p>';
 
 //select db～～～使用mysqli_connect连接数据库后，下面一句就会报错；
