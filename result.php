@@ -45,8 +45,13 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
 		   $riqi=strtotime($result[0]);//尽管日期在MYSQL里是日期格式，但取出的$value['日期']只是字符串格式，不是时间，将其转为时间戳；
 		   $weekarray=array("日","一","二","三","四","五","六");
   		   $zhouji=$weekarray[date("w",$riqi)];//换算成周几并转换成汉字表达，date("w",$riqi)是将日期转换为0～6的星期几；
-           echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
-		   
+           if （($zhouji=="日") or ($zhouji=="六")) then 
+           {echo "<td><p style='color:red;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
+            } else 
+           {
+                  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
+            }
+		//以上if。。then。。else是为了让周末两天特殊颜色显示；   
 		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
 		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
 		   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[3].'</p></td>';
