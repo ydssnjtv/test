@@ -8,6 +8,7 @@
   <th><span style='color:black;font-size:35px'>中二</span></th>
   <th><span style='color:black;font-size:35px'>审晚</span></th>
  </tr>
+
 <?php
 require_once('panduan.php');
 require_once('connectdb.php');
