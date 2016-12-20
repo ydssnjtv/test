@@ -46,7 +46,7 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
 		   $riqi=strtotime($result[0]);//尽管日期在MYSQL里是日期格式，但取出的$value['日期']只是字符串格式，不是时间，将其转为时间戳；
 		   $weekarray=array("日","一","二","三","四","五","六");
   		   $zhouji=$weekarray[date("w",$riqi)];//换算成周几并转换成汉字表达，date("w",$riqi)是将日期转换为0～6的星期几；
-           if （($zhouji=="日") or ($zhouji=="六")) then 
+           if  ($zhouji=="日" or  $zhouji=="六") 
            {echo "<td><p style='color:red;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
             } else 
            {
