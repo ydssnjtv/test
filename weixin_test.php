@@ -70,8 +70,8 @@ class wechatCallbackapiTest
 						<item>
 						<Title><![CDATA[排班表]]></Title>
 						<Description><![CDATA[请点击图片]]></Description>
-						<PicUrl><![CDATA[http://ydssnjtv.carp.mopaasapp.com/images/banbiao.jpg]]></PicUrl>
-						<Url><![CDATA[http://ydssnjtv.carp.mopaasapp.com/banbiao.html]]></Url>
+						<PicUrl><![CDATA[http://ydssnjtv.butterfly.mopaasapp.com/images/banbiao.jpg]]></PicUrl>
+						<Url><![CDATA[http://ydssnjtv.butterfly.mopaasapp.com/banbiao.html]]></Url>
 						</item>
 						</Articles>
                         <FuncFlag>0</FuncFlag>
@@ -96,8 +96,8 @@ class wechatCallbackapiTest
 						<item>
 						<Title><![CDATA[新版日历]]></Title>
 						<Description><![CDATA[请点击图片]]></Description>
-						<PicUrl><![CDATA[http://ydssnjtv.carp.mopaasapp.com/images/mengmeng_new.jpg]]></PicUrl>
-						<Url><![CDATA[http://ydssnjtv.carp.mopaasapp.com/mengmeng_new.html]]></Url>
+						<PicUrl><![CDATA[http://ydssnjtv.butterfly.mopaasapp.com/images/mengmeng_new.jpg]]></PicUrl>
+						<Url><![CDATA[http://ydssnjtv.butterfly.mopaasapp.com/mengmeng_new.html]]></Url>
 						</item>
 						</Articles>
                         <FuncFlag>0</FuncFlag>
