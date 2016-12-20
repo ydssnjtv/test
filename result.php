@@ -57,7 +57,8 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
 		       echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[5].'</p></td>';
             } else 
            {
-                  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
+                  echo "<p style='color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
+				  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
 				  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
 		          echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
 		          echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[3].'</p></td>';
