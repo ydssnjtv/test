@@ -48,7 +48,7 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
   		   $zhouji=$weekarray[date("w",$riqi)];//换算成周几并转换成汉字表达，date("w",$riqi)是将日期转换为0～6的星期几；
            if  ($zhouji=="日" or  $zhouji=="六") 
            {
-			   echo "<p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
+			   echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
 			   echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
 			   echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
 		       echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
@@ -57,7 +57,7 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
 		       echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$result[5].'</p></td>';
             } else 
            {
-                  echo "<p style='color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
+                  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[0].'</p></td>';
 				  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
 				  echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[1].'</p></td>';
 		          echo "<td><p style='color:black;font-size:35px;text-align:center'>".$result[2].'</p></td>';
