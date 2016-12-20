@@ -17,7 +17,7 @@ linkdb();//调用connectdb.php中的函数创建数据库连接
 $dbname = "7dc47f1132744";
 mysql_select_db($dbname) or die("不能选择数据库");
 
-echo "<p style='color:red;font-size:32px;text-align:center;'>成功构造Mysql数据库连接！<br/></p>";
+echo "<p style='color:black;font-size:32px;text-align:center;'>成功构造Mysql数据库连接！</p>";
 
 
 //将表单传入的时间赋值，生成查询时间变量；
