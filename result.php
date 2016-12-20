@@ -47,7 +47,7 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
 		   $weekarray=array("日","一","二","三","四","五","六");
   		   $zhouji=$weekarray[date("w",$riqi)];//换算成周几并转换成汉字表达，date("w",$riqi)是将日期转换为0～6的星期几；
            if  ($zhouji=="日" or  $zhouji=="六") 
-           {echo "<td><p style='color:red;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
+           {echo "<td><p style='color:white;background-color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
             } else 
            {
                   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$zhouji.'</p></td>';
