@@ -94,6 +94,32 @@ class wechatCallbackapiTest
 						<ArticleCount>1</ArticleCount>
 						<Articles>
 						<item>
+						<Title><![CDATA[节目准备科操作规范]]></Title>
+						<Description><![CDATA[请点击图片]]></Description>
+						<PicUrl><![CDATA[http://ydssnjtv.butterfly.mopaasapp.com/images/emergency.jpg]]></PicUrl>
+						<Url><![CDATA[http://ydssnjtv.butterfly.mopaasapp.com/emergency.html]]></Url>
+						</item>
+						</Articles>
+                        <FuncFlag>0</FuncFlag>
+                        </xml>";
+				$msgType = "news";
+				$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType);
+                echo $resultStr;
+				exit;
+			}
+			//如果对方输入“2”则返回应急处理页面；
+
+
+			if($keyword == "3")
+			{
+				$textTpl = "<xml>
+                        <ToUserName><![CDATA[%s]]></ToUserName>
+                        <FromUserName><![CDATA[%s]]></FromUserName>
+                        <CreateTime>%s</CreateTime>
+                        <MsgType><![CDATA[%s]]></MsgType>
+						<ArticleCount>1</ArticleCount>
+						<Articles>
+						<item>
 						<Title><![CDATA[新版日历]]></Title>
 						<Description><![CDATA[请点击图片]]></Description>
 						<PicUrl><![CDATA[http://ydssnjtv.butterfly.mopaasapp.com/images/mengmeng_new.jpg]]></PicUrl>
@@ -107,7 +133,8 @@ class wechatCallbackapiTest
                 echo $resultStr;
 				exit;
 			}
-			//如果对方输入“2”则返回日历页面；
+			//如果对方输入“3”则返回日历页面；
+
 			
 			if($keyword <> null)
             {
@@ -120,7 +147,7 @@ class wechatCallbackapiTest
                         <FuncFlag>0</FuncFlag>
                         </xml>";
 				$msgType = "text";
-                $contentStr = "输入“1”--查询班表"."\n"."输入“2”--显示日历";
+                $contentStr = "输入“1”--查询班表"."\n"."输入“2”--查询节目准备科操作规范"."\n"."输入“3”--显示日历";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
 				exit;
