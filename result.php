@@ -29,7 +29,7 @@ $timeend=date("Y-m-d",mktime(0,0,0,$month+1,1,$year));//下个月的第一天
 $timeend1=date("Y-m-d", strtotime("$timeend -1 days"));//本月的最后一天
 
 echo "<p style='color:red;font-size:32px;text-align:center;'>你选择的时间是：".$year.'年'.$month.'月<br/></p>';
-panduan($time);	//调用的是panduan.php的函数
+//panduan($time);	//调用的是panduan.php的函数
 //具体查询和结果显示
 $sql = "SELECT * FROM `banbiao` WHERE `日期` BETWEEN '$time' AND '$timeend1'";//sql语句里的表和字段要用``括起来，字符串和变量要用单引号括起来；
 //$sql = "SELECT * FROM `banbiao` WHERE `审晚` = '郑雯'";
