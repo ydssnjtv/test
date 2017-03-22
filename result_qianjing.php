@@ -7,7 +7,7 @@
   <th><span style='color:black;font-size:30px'>小晚</span></th>
   <th><span style='color:black;font-size:30px'>中二</span></th>
   <th><span style='color:black;font-size:30px'>审晚</span></th>
-  <th><span style='color:black;bgcolor:grey;font-size:30px'>收带</span></th>
+  <th><span style='color:red;bgcolor:grey;font-size:30px'>收带</span></th>
  </tr>
 
 <?php
@@ -56,7 +56,7 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
 		       echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[3].'</p></td>';
 		       echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[4].'</p></td>';
 		       echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[5].'</p></td>';
-			   echo "<td><p style='color:white;bgcolor:grey;font-size:30px;text-align:center'>".$result[6].'</p></td>';
+			   echo "<td><p style='color:red;bgcolor:grey;font-size:30px;text-align:center'>".$result[6].'</p></td>';
             } else 
            {
                 echo "<tr>";
@@ -67,7 +67,7 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
 		          echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[3].'</p></td>';
 		          echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[4].'</p></td>';
 		          echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[5].'</p></td>';
-				  echo "<td><p style='color:black;bgcolor:grey;font-size:30px;text-align:center'>".$result[6].'</p></td>';
+				  echo "<td><p style='color:red;bgcolor:grey;font-size:30px;text-align:center'>".$result[6].'</p></td>';
             }
 		//以上if。。then。。else是为了让周末两天特殊颜色显示；   
 
