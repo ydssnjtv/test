@@ -1,13 +1,13 @@
 ﻿<table border="1" align="center">
  <tr>
-  <th><span style='color:black;font-size:30px'>日期</span></th>
-  <th><span style='color:black;font-size:30px'>星期</span></th>
-  <th><span style='color:black;font-size:30px'>中班</span></th>
-  <th><span style='color:black;font-size:30px'>早班</span></th>
-  <th><span style='color:black;font-size:30px'>小晚</span></th>
-  <th><span style='color:black;font-size:30px'>中二</span></th>
-  <th><span style='color:black;font-size:30px'>审晚</span></th>
-  <th bgcolor='grey'><span style='color:red;font-size:30px'>收带</span></th>   
+  <th><span style='color:black;font-size:32px'>日期</span></th>
+  <th><span style='color:black;font-size:32px'>星期</span></th>
+  <th><span style='color:black;font-size:32px'>中班</span></th>
+  <th><span style='color:black;font-size:32px'>早班</span></th>
+  <th><span style='color:black;font-size:32px'>小晚</span></th>
+  <th><span style='color:black;font-size:32px'>中二</span></th>
+  <th><span style='color:black;font-size:32px'>审晚</span></th>
+  <th bgcolor='grey'><span style='color:red;font-size:32px'>收带</span></th>   
  </tr>
 
 <?php
@@ -47,25 +47,25 @@ while($result=mysql_fetch_row($a2))//通过循环读取数据内容，mysql_fetc
            if  ($zhouji=="日" or  $zhouji=="六") 
            {
 			  echo "<tr bgcolor='black'>";
-			   echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[0].'</p></td>';
-			   echo "<td><p style='color:white;font-size:30px;text-align:center'>".$zhouji.'</p></td>';
-			   echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[1].'</p></td>';
-		       echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[2].'</p></td>';
-		       echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[3].'</p></td>';
-		       echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[4].'</p></td>';
-		       echo "<td><p style='color:white;font-size:30px;text-align:center'>".$result[5].'</p></td>';
-			   echo "<td bgcolor='grey'><p style='color:red;font-size:30px;text-align:center'>".$result[6].'</p></td>'; 
+			   echo "<td><p style='color:white;font-size:32px;text-align:center'>".$result[0].'</p></td>';
+			   echo "<td><p style='color:white;font-size:32px;text-align:center'>".$zhouji.'</p></td>';
+			   echo "<td><p style='color:white;font-size:32px;text-align:center'>".$result[1].'</p></td>';
+		       echo "<td><p style='color:white;font-size:32px;text-align:center'>".$result[2].'</p></td>';
+		       echo "<td><p style='color:white;font-size:32px;text-align:center'>".$result[3].'</p></td>';
+		       echo "<td><p style='color:white;font-size:32px;text-align:center'>".$result[4].'</p></td>';
+		       echo "<td><p style='color:white;font-size:32px;text-align:center'>".$result[5].'</p></td>';
+			   echo "<td bgcolor='grey'><p style='color:red;font-size:32px;text-align:center'>".$result[6].'</p></td>'; 
             } else 
            {
                 echo "<tr>";
-				  echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[0].'</p></td>';
-				  echo "<td><p style='color:black;font-size:30px;text-align:center'>".$zhouji.'</p></td>';
-				  echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[1].'</p></td>';
-		          echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[2].'</p></td>';
-		          echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[3].'</p></td>';
-		          echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[4].'</p></td>';
-		          echo "<td><p style='color:black;font-size:30px;text-align:center'>".$result[5].'</p></td>';
-				  echo "<td bgcolor='grey'><p style='color:red;font-size:30px;text-align:center'>".$result[6].'</p></td>'; 
+				  echo "<td><p style='color:black;font-size:32px;text-align:center'>".$result[0].'</p></td>';
+				  echo "<td><p style='color:black;font-size:32px;text-align:center'>".$zhouji.'</p></td>';
+				  echo "<td><p style='color:black;font-size:32px;text-align:center'>".$result[1].'</p></td>';
+		          echo "<td><p style='color:black;font-size:32px;text-align:center'>".$result[2].'</p></td>';
+		          echo "<td><p style='color:black;font-size:32px;text-align:center'>".$result[3].'</p></td>';
+		          echo "<td><p style='color:black;font-size:32px;text-align:center'>".$result[4].'</p></td>';
+		          echo "<td><p style='color:black;font-size:32px;text-align:center'>".$result[5].'</p></td>';
+				  echo "<td bgcolor='grey'><p style='color:red;font-size:32px;text-align:center'>".$result[6].'</p></td>'; 
             }
 		//以上if。。then。。else是为了让周末两天特殊颜色显示；   
 
