@@ -7,7 +7,7 @@
   <th><span style='color:black;font-size:30px'>小晚</span></th>
   <th><span style='color:black;font-size:30px'>中二</span></th>
   <th><span style='color:black;font-size:30px'>审晚</span></th>
-  <th><span style='color:red;font-size:30px'>收带</span></th>       <!--设置的bgcolor没用 -->
+  <th bgcolor='grey'><span style='color:red;font-size:30px'>收带</span></th>   
  </tr>
 
 <?php
