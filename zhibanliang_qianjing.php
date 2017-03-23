@@ -104,6 +104,19 @@ while($i<=8){
    $i++;
 }
 
+echo "<tr><td><p style='color:black;font-size:35px;text-align:center'>收带</p></td>";
+$i=0;
+while($i<=8){
+  $ry=$renyuan[$i];
+  $sql_ss = "select count(*) from `banbiao` where `日期` BETWEEN '$time' AND '$timeend1' and `收带` like '%$ry%'";//select语句里变量要用引号括起来！！！！这句执行的结果是某人本月所有早班的列表；
+  $aa=mysql_query($sql_ss)or die("对不起，读入数据时出错了！". mysql_error());
+  $count=mysql_fetch_row($aa);
+   echo "<td><p style='color:black;font-size:35px;text-align:center'>".$count[0]."</p></td>";
+   $summary[$ry]=$summary[$ry]+$count[0];
+   if($i==7){echo "</tr>";}
+   $i++;
+}
+
 echo "<tr><td><p style='color:black;font-size:35px;text-align:center;font-weight:bold'>合计</p></td>";
 $i=0;
 foreach($summary as $cc=>$vv){
