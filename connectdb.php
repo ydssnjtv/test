@@ -14,7 +14,7 @@ mysql_query("SET NAMES UTF8");
 if (!$link) {die('Could not connect: '.mysql_error());}
 //echo "成功连接新浪云主机！<br/>";
   
-	 echo "<p style='color:black;font-size:32px;text-align:center;'>现在是".date('y-m-d H:i:s',time()).',已成功连接新版Mopaas云主机！</p>';
+	 echo "<p style='color:black;font-size:32px;text-align:center;'>现在是".date('y-m-d H:i:s',time()+3600*8).',已成功连接新版Mopaas云主机！</p>';  //3600*8,是因为服务器时钟好像慢8个小时;
 
 //select db～～～使用mysqli_connect连接数据库后，下面一句就会报错；
 //mysql_select_db($dbname, $link) or die ('Can\'t use dbname : ' . mysql_error());
